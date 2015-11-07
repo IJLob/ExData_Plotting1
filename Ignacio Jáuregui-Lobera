@@ -1,0 +1,59 @@
+For these exercises I took only the rows corresponding to 01-02/02/2007 from the original Dataset.txt
+Plot1.R
+> Global_active_power <- as.numeric(household_power_consumption$Global_active_power)
+> hist(Global_active_power, main="Global Active Power",xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red") 
+> dev.copy(png, file="plot1.png", height=480, width=480) 
+quartz_off_screen 
+                4 
+> dev.off(4)
+RStudioGD 
+        2
+Plot2.R
+> Global_active_power <- as.numeric(household_power_consumption$Global_active_power)
+> datetime <- strptime(paste(household_power_consumption$Date, household_power_consumption$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
+> plot(datetime, Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
+> dev.copy(png, file ="plot2.png", width=480, height=480)
+quartz_off_screen 
+                4 
+> dev.off(4)
+RStudioGD 
+        2 
+Plot3.R
+> Global_active_Power <- as.numeric(household_power_consumption$Global_active_power)
+> datetime <- strptime(paste(household_power_consumption$Date, household_power_consumption$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+> subMetering1 <- as.numeric(household_power_consumption$Sub_metering_1)
+> subMetering2 <- as.numeric(household_power_consumption$Sub_metering_2)
+> subMetering3 <- as.numeric(household_power_consumption$Sub_metering_3)
+> plot(datetime, subMetering1, type="l", ylab="Energy Submetering", xlab="")
+> lines(datetime, subMetering2, type="l", col="red")
+> lines(datetime, subMetering3, type="l", col="blue")
+> legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=2, col=c("black", "red", "blue"))
+> dev.copy(png, file ="plot3.png", width=480, height=480)
+quartz_off_screen 
+                4 
+> dev.off(4)
+RStudioGD 
+        2 
+Plot4.R
+> Global_active_power <- as.numeric(household_power_consumption$Global_active_power)
+> Global_reactive_power <- as.numeric(household_power_consumption$Global_reactive_power)
+> Voltage <- as.numeric(household_power_consumption$Voltage)
+> subMetering1 <- as.numeric(household_power_consumption$Sub_metering_1)
+> subMetering2 <- as.numeric(household_power_consumption$Sub_metering_2)
+> subMetering3 <- as.numeric(household_power_consumption$Sub_metering_3)
+> datetime <- strptime(paste(household_power_consumption$Date, household_power_consumption$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
+> par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
+> plot(datetime, Global_active_power, type="l", xlab="", ylab="Global Active Power", cex=0.2)
+> plot(datetime, Voltage, type="l", xlab="datetime", ylab="Voltage")
+> plot(datetime, subMetering1, type="l", ylab="Energy Submetering", xlab="")
+> lines(datetime, subMetering2, type="l", col="red")
+> lines(datetime, subMetering3, type="l", col="blue")
+> legend("topright",  col=c("black", "red", "blue"), lty=1, lwd=2, bty="n", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+> plot(datetime, Global_reactive_power, type="l", xlab="datetime", ylab="Global_reactive_power")
+> dev.copy(png, file="plot4.png", width=480, height=480)
+quartz_off_screen 
+                4 
+> dev.off(4)
+RStudioGD 
+        2 
+I have submitted the graphics by GitHub " rdpeng/ExData_Plotting1 ", Forgot to add figures to repo... In a comment just below.
